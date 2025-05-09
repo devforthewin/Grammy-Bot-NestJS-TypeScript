@@ -4,9 +4,19 @@ import { Bot } from 'grammy';
 @Injectable()
 export class BotCommandService {
   // Persistent keyboard layout
-  private readonly keyboard = {
+  private readonly mainKeyboard = {
     reply_markup: {
-      keyboard: [[{ text: 'Todo' }, { text: 'Subscribe' }]],
+      keyboard: [
+        [
+          {
+            text: 'Todo',
+            web_app: {
+              url: 'https://your-webapp-url.com',
+            },
+          },
+          { text: 'Subscribe' },
+        ],
+      ],
       resize_keyboard: true,
       one_time_keyboard: false,
       input_field_placeholder: 'Select an action',
@@ -22,12 +32,12 @@ export class BotCommandService {
 
     // Handle /start command
     bot.command('start', async (ctx) => {
-      await ctx.reply('Welcome! Use the menu below 👇', this.keyboard);
+      await ctx.reply('Welcome! Use the menu below 👇', this.mainKeyboard);
     });
 
     // Handle /menu command
     bot.command('menu', async (ctx) => {
-      await ctx.reply('Opening main menu:', this.keyboard);
+      await ctx.reply('Opening main menu:', this.mainKeyboard);
     });
 
     // Handle To-do button click

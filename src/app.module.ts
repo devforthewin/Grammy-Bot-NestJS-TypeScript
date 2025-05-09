@@ -4,9 +4,10 @@ import { AppService } from './app.service';
 import { BotModule } from './bot/bot.module';
 import { ConfigModule } from '@nestjs/config';
 import { globalConfig } from './app/configs/app.config';
+import { TodoModule } from './todo/todo.module';
 
 @Module({
-  imports: [ConfigModule.forRoot(globalConfig), BotModule],
+  imports: [ConfigModule.forRoot(globalConfig), BotModule, TodoModule],
   controllers: [AppController],
   providers: [AppService],
 })
