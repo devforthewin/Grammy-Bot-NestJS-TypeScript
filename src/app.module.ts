@@ -3,7 +3,7 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { BotModule } from './bot/bot.module';
 import { ConfigModule } from '@nestjs/config';
-import { globalConfig } from './app/configs/app.config';
+import { globalConfig } from './app/configs/global.config';
 import { TodoModule } from './todo/todo.module';
 
 @Module({

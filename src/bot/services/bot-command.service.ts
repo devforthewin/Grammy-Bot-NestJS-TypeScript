@@ -1,8 +1,13 @@
 import { Injectable } from '@nestjs/common';
 import { Bot } from 'grammy';
+import { botConfig } from '../../app/configs/env.config';
 
 @Injectable()
 export class BotCommandService {
+  // Flexible URL generation for buttons
+  private getWebAppUrl(endpoint: string): string {
+    return `${botConfig.frontendUrl}/${endpoint}`;
+  }
   // Persistent keyboard layout
   private readonly mainKeyboard = {
     reply_markup: {
@@ -11,7 +16,7 @@ export class BotCommandService {
           {
             text: 'Todo',
             web_app: {
-              url: 'https://your-webapp-url.com',
+              url: this.getWebAppUrl('todo-list'),
             },
           },
           { text: 'Subscribe' },
