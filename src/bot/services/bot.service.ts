@@ -1,11 +1,12 @@
 import { Injectable } from '@nestjs/common';
 import { Bot } from 'grammy';
+import { BotCommandService } from './bot-command.service';
 
 @Injectable()
 export class BotService {
   private bot: Bot;
 
-  constructor() {
+  constructor(private readonly botCommandService: BotCommandService) {
     //bot initialization
     const token = process.env.BOT_TOKEN;
     if (!token) {
@@ -17,9 +18,7 @@ export class BotService {
   onModuleInit() {
     this.bot.init();
 
-    this.bot.command('start', (ctx) =>
-      ctx.reply('Hello from NestJS + Fastify + Grammy!'),
-    );
+    this.botCommandService.register(this.bot);
 
     this.bot.start();
   }

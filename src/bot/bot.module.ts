@@ -1,7 +1,8 @@
-import {Module} from "@nestjs/common";
+import { Module } from '@nestjs/common';
+import { BotService } from './services/bot.service';
+import { BotCommandService } from './services/bot-command.service';
 
 @Module({
-  providers: []
+  providers: [BotService, BotCommandService],
 })
-
-export class TelegramBotModule {}
+export class BotModule {}
