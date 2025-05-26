@@ -10,6 +10,11 @@ export class BotService {
   constructor(private readonly botCommandService: BotCommandService) {
     //bot initialization
     const token = botConfig.botToken;
+
+    if (!token) {
+      throw new Error('Bot token is missing');
+    }
+
     this.bot = new Bot(token);
   }
 
