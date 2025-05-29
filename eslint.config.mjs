@@ -13,16 +13,16 @@ export default tseslint.config(
   eslintPluginPrettierRecommended,
   {
     languageOptions: {
-      globals: {
-        ...globals.node,
-        ...globals.jest,
-      },
       parser: tseslint.parser,
       sourceType: 'module',
       parserOptions: {
         project: ['./tsconfig.json'],
-        projectService: true,
         tsconfigRootDir: new URL('.', import.meta.url).pathname,
+        projectService: true,
+      },
+      globals: {
+        ...globals.node,
+        ...globals.jest,
       },
     },
   },
@@ -31,7 +31,6 @@ export default tseslint.config(
       '@typescript-eslint/no-explicit-any': 'off',
       '@typescript-eslint/no-floating-promises': 'warn',
       '@typescript-eslint/no-unsafe-argument': 'warn',
-      // '@typescript-eslint/no-unsafe-call': 'warn',
       '@typescript-eslint/interface-name-prefix': 'off',
       '@typescript-eslint/explicit-function-return-type': 'off',
       '@typescript-eslint/explicit-module-boundary-types': 'off',

@@ -12,7 +12,7 @@ function getEnvVar(key: string, optional = false): string | undefined {
 
 // Bot config
 export const botConfig = {
-  botToken: getEnvVar('BOT_TOKEN'),
+  botToken: getEnvVar('TELEGRAM_BOT_TOKEN'),
   frontendUrl: getEnvVar('FRONTEND_URL', true),
   webhookUrl: getEnvVar('WEBHOOK_URL'),
 };
