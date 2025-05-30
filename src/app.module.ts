@@ -5,10 +5,10 @@ import { BotModule } from './bot/bot.module';
 import { ConfigModule } from '@nestjs/config';
 import { globalConfig } from './app/configs/global.config';
 import { TodoModule } from './todo/todo.module';
-import { TelegramAuthModule } from './ telegram-auth/telegram-auth.module';
-import { UsersModule } from './users/users.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { typeormAsyncConfig } from './app/configs/app.typeorm';
+import { UserModule } from './auth/users/user.module';
+import { TelegramAuthModule } from './auth/telegram-auth/telegram-auth.module';
 
 @Module({
   imports: [
@@ -16,8 +16,8 @@ import { typeormAsyncConfig } from './app/configs/app.typeorm';
     TypeOrmModule.forRootAsync(typeormAsyncConfig),
     BotModule,
     TodoModule,
+    UserModule,
     TelegramAuthModule,
-    UsersModule,
   ],
   controllers: [AppController],
   providers: [AppService],
